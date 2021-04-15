@@ -5,50 +5,44 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var edit_values: EditText
-    lateinit var button_data: Button
-    lateinit var button_show: Button
+    lateinit var editValues: EditText
+    lateinit var buttonData: Button
+    lateinit var buttonShow: Button
 
-    var accountant: Int = 0
+    lateinit var mViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initData()
-        initAccountant()
         initCLick()
-        validatorAccountant()
-    }
-
-    private fun validatorAccountant() {
-        if (accountant > 5) {
-            accountant = 0
-        }
-    }
-
-    private fun initCLick() {
-        button_data.setOnClickListener {
-            accountant++
-            validatorAccountant()
-            initAccountant()
-        }
-        
-        button_show.setOnClickListener {
-            Toast.makeText(this, accountant.toString(), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun initAccountant() {
-        edit_values.setText(accountant.toString())
     }
 
     private fun initData() {
-        edit_values = findViewById(R.id.edit_values)
-        button_data = findViewById(R.id.button_data)
-        button_show = findViewById(R.id.button_show)
+        mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        editValues = findViewById(R.id.edit_values)
+        buttonData = findViewById(R.id.button_data)
+        buttonShow = findViewById(R.id.button_show)
+
+        mViewModel.mAccountant.observe(this, Observer { value ->
+            editValues.setText(value)
+        })
+    }
+
+    private fun initCLick() {
+        buttonData.setOnClickListener {
+            mViewModel.Accountant()
+        }
+
+        buttonShow.setOnClickListener {
+            Toast.makeText(applicationContext, "${mViewModel.mAccountant.value}", Toast.LENGTH_SHORT).show()
+        }
     }
 }
