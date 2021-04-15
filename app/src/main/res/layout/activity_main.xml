@@ -7,12 +7,50 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/text_accountant"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:textAlignment="center"
+        android:text="@string/text_accountant"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_values"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:autofillHints="null"
+        android:hint="@string/edit_values"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/text_accountant"
+        app:layout_constraintStart_toStartOf="@id/text_accountant"
+        app:layout_constraintTop_toBottomOf="@id/text_accountant" />
+
+    <Button
+        android:id="@+id/button_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/button_data"
+        app:layout_constraintEnd_toEndOf="@id/edit_values"
+        app:layout_constraintStart_toStartOf="@id/edit_values"
+        app:layout_constraintTop_toBottomOf="@id/edit_values" />
+
+    <Button
+        android:id="@+id/button_show"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_show"
+        app:layout_constraintEnd_toEndOf="@id/button_data"
+        app:layout_constraintStart_toStartOf="@id/button_data"
+        app:layout_constraintTop_toBottomOf="@id/button_data" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

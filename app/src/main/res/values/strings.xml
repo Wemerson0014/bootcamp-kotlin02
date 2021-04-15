@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ViewModel</string>
+
+    <!-- activity_main -->
+    <string name="text_accountant">Accountant</string>
+    <string name="edit_values">Enter with a value here</string>
+    <string name="button_data">data</string>
+    <string name="button_show">show</string>
 </resources>
